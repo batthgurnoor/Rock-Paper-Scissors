@@ -1,3 +1,5 @@
+const jsConfetti = new JSConfetti();
+
 const choice = ["rock", "paper", "scissors"];
 const content = [
   "MACHINES ARE THREATING TO TAKE OVER THE WORLD....",
@@ -133,12 +135,13 @@ function displayWinner() {
   var audio;
   if (playWinCount > compWinCount && playWinCount >= tieCount) {
     content1 = playerWinMessage;
-    audio = new Audio("win.wav");
+    audio = new Audio("win.mp3");
+    jsConfetti.addConfetti();
   } else if (playWinCount < compWinCount && compWinCount >= tieCount) {
     content1 = computerWinMessage;
     audio = new Audio("loss.mp3");
   } else {
-    audio = new Audio("tie.wav");
+    audio = new Audio("tie.mp3");
     content1 = tieMessage;
   }
   audio.play();
@@ -150,4 +153,8 @@ function displayWinner() {
   for (let element of x) {
     element.style.visibility = "visible";
   }
+}
+
+function reloadPage() {
+  location.reload();
 }
