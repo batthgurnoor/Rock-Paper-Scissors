@@ -16,11 +16,6 @@ const computerWinMessage = [
   "GATHER YOUR COURAGE FOR ANOTHER ROUND",
   "BRAVE HUMAN!",
 ];
-const tieMessage = [
-  "EQUAL FORCES HAVE MET!",
-  " NEITHER MAN NOR MACHINE TAKES THE CROWN TODAY",
-  "ANOTHER ROUND?",
-];
 
 var message = document.getElementById("intro_text");
 let currentIndex = 0;
@@ -30,7 +25,6 @@ let output = document.getElementById("intro_text");
 var bodyContainer = document.getElementById("body_container");
 var resultContainer = document.getElementById("result_page");
 let resultText = document.getElementById("outcome");
-var gameCounter = 0;
 var playWinCount = 0;
 var compWinCount = 0;
 var tieCount = 0;
@@ -78,21 +72,20 @@ function playGame(event) {
     tieCount++;
     document.getElementById("ties").innerHTML = tieCount;
   }
-  gameCounter++;
-  console.log(`Game Count: ${gameCounter}`);
 
-  if (gameCounter >= 5) {
-    console.log(`now here`);
-
+  if (playWinCount >= 5 || compWinCount >= 5) {
     declareWinner();
   }
 }
 
 function showContent() {
-  var x = document.getElementById("actualContent");
-  x.style.visibility = "visible";
-  x.style.transition = "2s";
+  setTimeout(function () {
+    var x = document.getElementById("actualContent");
+    x.style.visibility = "visible";
+    x.style.transition = "2s";
+  }, 2000);
 }
+
 let lastTime = 0;
 const delay = 100;
 
@@ -140,9 +133,6 @@ function displayWinner() {
   } else if (playWinCount < compWinCount && compWinCount >= tieCount) {
     content1 = computerWinMessage;
     audio = new Audio("loss.mp3");
-  } else {
-    audio = new Audio("tie.mp3");
-    content1 = tieMessage;
   }
   audio.play();
 

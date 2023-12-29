@@ -65,3 +65,7 @@ body {
   transition: 0.2s;
   box-shadow: 0px 0px 10px white;
 }
+#actual_content {
+  animation: 2s fadeIn;
+  animation-fill-mode: forwards;
+}
