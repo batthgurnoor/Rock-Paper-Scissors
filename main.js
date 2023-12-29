@@ -122,7 +122,6 @@ function declareWinner() {
   setTimeout(function () {
     bodyContainer.innerHTML = "";
   }, 1000);
-  resultContainer.classList.add("fadeIn");
   setTimeout(function () {
     resultContainer.style.visibility = "visible";
     displayWinner();
@@ -143,8 +142,12 @@ function displayWinner() {
     content1 = tieMessage;
   }
   audio.play();
-  document.getElementById("reload_button").style.visibility = "visibile";
+
   document.getElementById("outcome").innerHTML = content1[0];
   document.getElementById("outcome_inner").innerHTML = content1[1];
   document.getElementById("outcome_last").innerHTML = content1[2];
+  var x = document.getElementsByClassName("button");
+  for (let element of x) {
+    element.style.visibility = "visible";
+  }
 }
