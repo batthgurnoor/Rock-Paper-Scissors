@@ -19,7 +19,7 @@
           display: flex;
           flex-direction: column;
           align-items: center;
-          opacity: 0;
+          visibility: hidden;
         "
       >
         <h3>CHOOSE YOUR WEAPON</h3>
@@ -54,8 +54,16 @@
         <h3 id="results"></h3>
       </div>
     </div>
-    <div id="result_page">
-      <h2 id="outcome"></h2>
+    <div
+      id="result_page"
+      style="display: flex; flex-direction: column; align-items: center"
+    >
+      <h1 id="outcome"></h1>
+      <h2 id="outcome_inner"></h2>
+      <h3 id="outcome_last"></h3>
+      <div id="reload_button" onclick="reloadPage()" style="visibility: hidden">
+        Another Round
+      </div>
     </div>
   </body>
 </html>
