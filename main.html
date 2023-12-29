@@ -1,4 +1,5 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html>
   <head>
     <meta charset="UTF-8" />
     <title>Rock Paper Scissors</title>
@@ -6,15 +7,32 @@
     <script src="main.js" defer></script>
   </head>
   <body>
-    <div id="body_container" style="display: flex; flex-direction: column; align-items: center">
+    <div
+      id="body_container"
+      style="display: flex; flex-direction: column; align-items: center"
+    >
       <h1>MAN VS COMPUTER</h1>
       <div id="intro_text"></div>
-      <div id="actualContent" style="display: flex; flex-direction: column; align-items: center; opacity: 0">
+      <div
+        id="actualContent"
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          opacity: 0;
+        "
+      >
         <h3>CHOOSE YOUR WEAPON</h3>
         <div class="tile_container" style="display: flex; align-items: center">
-          <div class="tile" onclick="playGame(event)"><img id="rock" src="rock.png" alt="Rock" /></div>
-          <div class="tile" onclick="playGame(event)"><img id="paper" src="paper.png" alt="Paper" /></div>
-          <div class="tile" onclick="playGame(event)"><img id="scissors" src="scissors.png" alt="Scissors" /></div>
+          <div class="tile" onclick="playGame(event)">
+            <img id="rock" src="rock.png" alt="Rock" />
+          </div>
+          <div class="tile" onclick="playGame(event)">
+            <img id="paper" src="paper.png" alt="Paper" />
+          </div>
+          <div class="tile" onclick="playGame(event)">
+            <img id="scissors" src="scissors.png" alt="Scissors" />
+          </div>
         </div>
         <div class="result_container">
           <table class="result" style="text-align: center">
@@ -34,10 +52,10 @@
           </table>
         </div>
         <h3 id="results"></h3>
-        <div id="result_page">
-          <h2 id="outcome"></h2>
-        </div>
       </div>
+    </div>
+    <div id="result_page">
+      <h2 id="outcome"></h2>
     </div>
   </body>
 </html>

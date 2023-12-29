@@ -1,4 +1,5 @@
-body {  background-color: black;
+body {
+  background-color: black;
   color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -21,4 +22,14 @@ body {  background-color: black;
 
 .tile > img {
   height: 100%;
+}
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+#body_container.fadeOut {
+  animation: fadeOut 1s forwards; /* Adjust time as needed */
 }

@@ -1,4 +1,6 @@
 const choice = ["rock", "paper", "scissors"];
+var bodyContainer = document.getElementById("body_container");
+var resultContainer = document.getElementById("result_page");
 function getComputerChoice() {
   const randomIndex = Math.floor(Math.random() * 1000000) % choice.length;
   const randomOption = choice[randomIndex];
@@ -21,15 +23,11 @@ function playround(playerSelection) {
     (playerSelection == "scissors" && computerSelection == "paper") ||
     (playerSelection == "paper" && computerSelection == "rock")
   ) {
-    console.log(playerSelection);
-    console.log(computerSelection);
     document.getElementById(
       "results"
     ).innerHTML = `WOW! You are good at this. ${playerSelection} beats ${computerSelection}`;
     return "win";
   } else {
-    console.log(playerSelection);
-    console.log(computerSelection);
     document.getElementById(
       "results"
     ).innerHTML = `DAMN IT! Machines win this round. ${computerSelection} beats ${playerSelection}`;
@@ -38,13 +36,11 @@ function playround(playerSelection) {
 }
 
 function declareWinner() {
-  var bodyContainer = document.getElementById("body_container");
-  var resultContainer = document.getElementById("result_page");
-
-  bodyContainer.style.visibility = "hidden";
-  bodyContainer.style.transition = "3s";
+  bodyContainer.classList.add("fadeOut"); // Apply the animation
+  setTimeout(function () {
+    bodyContainer.innerHTML = ""; // Clear content after animation completes
+  }, 1000);
   resultContainer.style.visibility = "visible";
-  resultContainer.style.transition = "2s";
 }
 
 function playGame(event) {
@@ -61,7 +57,11 @@ function playGame(event) {
     document.getElementById("ties").innerHTML = tieCount;
   }
   gameCounter++;
-  if (gameCounter == 5) {
+  console.log(`Game Count: ${gameCounter}`);
+
+  if (gameCounter >= 5) {
+    console.log(`now here`);
+
     declareWinner();
   }
 }
@@ -71,34 +71,39 @@ const content = [
   "UNLESS YOU BEAT THEM AT A GAME OF ROCK PAPER SCISSORS FIRST TO 5.....",
   "DO YOU HAVE WHAT IT TAKES TO SAVE THE WORLD?",
 ];
+
 var message = document.getElementById("intro_text");
 let currentIndex = 0;
 let charIndex = 0;
 let output = document.getElementById("intro_text");
-
-function displayCharacters() {
-  var mytimeout;
-  if (charIndex === content[currentIndex].length) {
-    currentIndex++;
-    if (currentIndex != content.length) {
-      charIndex = 0;
-      output.textContent = "";
-    } else {
-      showContent();
-    }
-  }
-  if (currentIndex != content.length) {
-    output.textContent += content[currentIndex].charAt(charIndex);
-    charIndex++;
-    mytimeout = setTimeout(displayCharacters, 100);
-  } else {
-    clearTimeout(mytimeout);
-  }
-}
 
 function showContent() {
   var x = document.getElementById("actualContent");
   x.style.opacity = 1;
   x.style.transition = "2s";
 }
-displayCharacters();
+let lastTime = 0;
+const delay = 100;
+
+function displayCharacters(time) {
+  if (charIndex === content[currentIndex].length) {
+    currentIndex++;
+    if (currentIndex !== content.length) {
+      charIndex = 0;
+      output.textContent = "";
+    } else {
+      showContent();
+      return;
+    }
+  }
+
+  if (time - lastTime > delay) {
+    output.textContent += content[currentIndex].charAt(charIndex);
+    charIndex++;
+    lastTime = time;
+  }
+  if (currentIndex !== content.length) {
+    requestAnimationFrame(displayCharacters);
+  }
+}
+requestAnimationFrame(displayCharacters);
