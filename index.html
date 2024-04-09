@@ -4,24 +4,33 @@
     <meta charset="UTF-8" />
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" defer></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <div
-      id="body_container"
-      style="display: flex; flex-direction: column; align-items: center"
-    >
-      <h1>MAN VS COMPUTER</h1>
-      <h2><div id="intro_text"></div></h2>
+    <div class="intro">
+      <h1 class="title">Welcome to Rock Paper Scissors Reimagined</h1>
+
+      <div class="field introField"><h2 class="intro_text container"></h2></div>
+
+      <div class="imagess leftt">
+        <img src="images/image (2).png" alt="Human" />
+      </div>
+      <div class="imagess rightt">
+        <img src="images/image (1).png" alt="Machine" />
+      </div>
+    </div>
+    <div id="body_container">
+      <div>
+        <div class="field"><h2 class="after_intro_text"></h2></div>
+      </div>
+      <div class="intro-content"></div>
+      <button class="custom-dark">Play Game</button>
+
       <div
         id="actualContent"
-        style="
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          visibility: hidden;
-        "
+        style="display: flex; flex-direction: column; align-items: center; visibility: hidden"
       >
         <h3>CHOOSE YOUR WEAPON</h3>
         <div class="tile_container" style="display: flex; align-items: center">
@@ -55,19 +64,11 @@
         <h3 id="results"></h3>
       </div>
     </div>
-    <div
-      id="result_page"
-      style="display: flex; flex-direction: column; align-items: center"
-    >
+    <div id="result_page" style="display: flex; flex-direction: column; align-items: center">
       <h1 id="outcome"></h1>
       <h2 id="outcome_inner"></h2>
       <h3 id="outcome_last"></h3>
-      <div
-        id="reload_button"
-        class="button"
-        onclick="reloadPage()"
-        style="visibility: hidden"
-      >
+      <div id="reload_button" class="button" onclick="reloadPage()" style="visibility: hidden">
         Another Round
       </div>
     </div>

@@ -30,7 +30,7 @@ var compWinCount = 0;
 var tieCount = 0;
 
 function getComputerChoice() {
-  const randomIndex = Math.floor(Math.random() * 1000000) % choice.length;
+  const randomIndex = Math.floor(Math.random() * 3);
   const randomOption = choice[randomIndex];
 
   return randomOption;
@@ -78,39 +78,51 @@ function playGame(event) {
   }
 }
 
+var typed = new Typed(".intro_text", {
+  strings: ["THIS IS A TIME OF THE GREAT WAR BETWEEN HUMANS AND MACHINES....."],
+
+  typeSpeed: 70,
+  backDelay: 100000,
+  backSpeed: 0,
+  onComplete: function (self) {
+    showIntro();
+  },
+});
+
+function startAfterIntro() {
+  var typed1 = new Typed(".after_intro_text", {
+    strings: [
+      "MACHINES ARE THREATING TO TAKE OVER THE WORLD....",
+      "UNLESS YOU BEAT THEM AT A GAME OF ROCK PAPER SCISSORS FIRST TO 5.....",
+      "DO YOU HAVE WHAT IT TAKES TO SAVE THE WORLD?",
+    ],
+
+    typeSpeed: 70,
+    backDelay: 1000,
+    backSpeed: 0,
+    onComplete: function (self) {
+      showButton();
+    },
+  });
+}
+function showIntro() {
+  document.getElementById("body_container").classList.add("visible");
+  startAfterIntro();
+}
+
+function showButton() {
+  document.querySelector(".custom-dark").classList.add("visible");
+}
+document.querySelector(".custom-dark").addEventListener("click", function () {
+  showContent();
+});
 function showContent() {
-  setTimeout(function () {
+  
     var x = document.getElementById("actualContent");
     x.style.visibility = "visible";
     x.style.transition = "2s";
   }, 2000);
 }
-
-let lastTime = 0;
-const delay = 100;
-
-function displayCharacters(time) {
-  if (charIndex === content[currentIndex].length) {
-    currentIndex++;
-    if (currentIndex !== content.length) {
-      charIndex = 0;
-      output.textContent = "";
-    } else {
-      showContent();
-      return;
-    }
-  }
-
-  if (time - lastTime > delay) {
-    output.textContent += content[currentIndex].charAt(charIndex);
-    charIndex++;
-    lastTime = time;
-  }
-  if (currentIndex !== content.length) {
-    requestAnimationFrame(displayCharacters);
-  }
-}
-requestAnimationFrame(displayCharacters);
 
 function declareWinner() {
   bodyContainer.classList.add("fadeOut");

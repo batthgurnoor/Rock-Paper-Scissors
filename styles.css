@@ -1,7 +1,20 @@
 body {
+  margin: 0;
+  padding: 0;
   background-color: black;
   color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow-wrap: break-word;
+
+  span {
+    font-size: 24px;
+  }
 }
 
 .tile {
@@ -68,4 +81,128 @@ body {
 #actual_content {
   animation: 2s fadeIn;
   animation-fill-mode: forwards;
+}
+
+#body_container {
+  opacity: 0;
+  transition: all 2s;
+  text-align: center;
+
+  &.visible {
+    opacity: 1;
+  }
+}
+
+.intro {
+  margin: 0;
+
+  height: 720px;
+  text-align: center;
+}
+.intro_text {
+  transition: all 0.3s;
+}
+.container {
+  position: relative;
+
+  overflow: hidden;
+}
+
+.imagess {
+  position: absolute;
+  width: 70%; /* Adjust based on your actual image sizes */
+  opacity: 0;
+  transition: 2s;
+}
+
+.leftt {
+  left: -50%; /* Start off-screen */
+  animation: enterLeft 3s forwards; /* Adjust time as needed */
+}
+
+.rightt {
+  right: -50%; /* Start off-screen */
+  animation: enterRight 3s forwards; /* Adjust time as needed */
+}
+
+@keyframes enterLeft {
+  0% {
+    left: -50%;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes enterRight {
+  0% {
+    right: -50%;
+    opacity: 0;
+  }
+  100% {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+.custom-dark {
+  opacity: 0;
+  display: inline-block;
+  font-size: 30px;
+  cursor: pointer;
+  background: rgba(190, 193, 196, 0.3);
+  padding: 10px 52px;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  border-radius: 8px;
+  transition: all 1s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border: none;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 119px;
+    height: 119px;
+    background: rgb(182, 194, 214);
+    opacity: 0.3;
+    border-radius: 50%;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: all 0.3s;
+  }
+  &:hover {
+    color: white;
+    transform: scale(1.05);
+
+    &:before {
+      transform: translate(-50%, -50%) scale(3);
+    }
+  }
+  &.visible {
+    opacity: 1;
+  }
+}
+.field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  text-align: center;
+  h2 {
+    margin: 0;
+  }
+  span {
+    font-size: 24px;
+  }
+}
+.introField {
+  .typed-cursor {
+    display: none;
+  }
 }
