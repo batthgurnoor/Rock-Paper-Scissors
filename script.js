@@ -127,15 +127,67 @@ function showContent() {
 
 function declareWinner() {
   bodyContainer.classList.add("fadeOut");
+  document.querySelector(".result_page").classList.add("visible");
   setTimeout(function () {
     bodyContainer.innerHTML = "";
   }, 1000);
   setTimeout(function () {
     resultContainer.style.visibility = "visible";
+
     displayWinner();
-  }, 2000);
+  }, 1000);
 }
 
+function reloadPage() {
+  location.reload();
+}
+function hideContent() {
+  var content = document.querySelectorAll(".intro, .custom-dark, .field");
+  content.forEach((item) => {
+    item.classList.add("hide");
+    setTimeout(function () {
+      item.classList.add("hideDisplay");
+    }, 2000);
+  });
+}
+
+function startAfterplay(content) {
+  var typed2 = new Typed(".outcome", {
+    strings: [content[0]],
+
+    typeSpeed: 70,
+    backDelay: 100000,
+    backSpeed: 0,
+    onComplete: function (self) {
+      resultNext(content);
+    },
+  });
+}
+
+function resultNext(content) {
+  var typed3 = new Typed(".outcome_inner", {
+    strings: [content[1]],
+
+    typeSpeed: 70,
+    backDelay: 100000,
+    backSpeed: 0,
+    onComplete: function (self) {
+      resultNext1(content);
+    },
+  });
+}
+function resultNext1(content) {
+  var typed4 = new Typed(".outcome_last", {
+    strings: [content[2]],
+
+    typeSpeed: 70,
+    backDelay: 100000,
+    backSpeed: 0,
+    onComplete: function (self) {
+      showReplayButton();
+    },
+  });
+}
 function displayWinner() {
   let content1;
   var audio;
@@ -149,25 +201,9 @@ function displayWinner() {
   }
   audio.play();
 
-  document.getElementById("outcome").innerHTML = content1[0];
-  document.getElementById("outcome_inner").innerHTML = content1[1];
-  document.getElementById("outcome_last").innerHTML = content1[2];
-  var x = document.getElementsByClassName("button");
-  for (let element of x) {
-    element.style.visibility = "visible";
-  }
+  startAfterplay(content1);
 }
 
-function reloadPage() {
-  location.reload();
-}
-function hideContent() {
-  var content = document.querySelectorAll(".intro, .custom-dark, .field");
-  console.log(content);
-  content.forEach((item) => {
-    item.classList.add("hide");
-    setTimeout(function () {
-      item.classList.add("hideDisplay");
-    }, 2000);
-  });
+function showReplayButton() {
+  document.querySelector(".lastButton").classList.add("visible");
 }

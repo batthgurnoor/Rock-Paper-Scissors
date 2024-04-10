@@ -9,6 +9,10 @@
     <script src="script.js" defer></script>
   </head>
   <body>
+    <div class="back-row-toggle splat-toggle">
+      <div class="rain front-row"></div>
+      <div class="rain back-row"></div>
+    </div>
     <h1 class="title">Welcome to Rock Paper Scissors Reimagined</h1>
 
     <div class="intro">
@@ -27,7 +31,7 @@
       <button class="custom-dark">Play Game</button>
 
       <div id="actualContent">
-        <h3>CHOOSE YOUR WEAPON</h3>
+        <h2>CHOOSE YOUR WEAPON</h2>
         <div class="tile_container">
           <div class="tile" onclick="playGame(event)">
             <img id="rock" src="rock.png" alt="Rock" />
@@ -59,13 +63,11 @@
         <h3 id="results"></h3>
       </div>
     </div>
-    <div id="result_page" style="display: flex; flex-direction: column; align-items: center">
-      <h1 id="outcome"></h1>
-      <h2 id="outcome_inner"></h2>
-      <h3 id="outcome_last"></h3>
-      <div id="reload_button" class="button" onclick="reloadPage()" style="visibility: hidden">
-        Another Round
-      </div>
+    <div id="result_page" class="result_page">
+      <h1 id="outcome" class="outcome"></h1>
+      <h2 id="outcome_inner" class="outcome_inner"></h2>
+      <h3 id="outcome_last" class="outcome_last"></h3>
+      <button id="reload_button" class="lastButton" onclick="reloadPage()">Another Round</button>
     </div>
   </body>
 </html>
