@@ -9,9 +9,9 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="intro">
-      <h1 class="title">Welcome to Rock Paper Scissors Reimagined</h1>
+    <h1 class="title">Welcome to Rock Paper Scissors Reimagined</h1>
 
+    <div class="intro">
       <div class="field introField"><h2 class="intro_text container"></h2></div>
 
       <div class="imagess leftt">
@@ -22,18 +22,13 @@
       </div>
     </div>
     <div id="body_container">
-      <div>
-        <div class="field"><h2 class="after_intro_text"></h2></div>
-      </div>
-      <div class="intro-content"></div>
+      <div class="field bottom"><h2 class="after_intro_text"></h2></div>
+
       <button class="custom-dark">Play Game</button>
 
-      <div
-        id="actualContent"
-        style="display: flex; flex-direction: column; align-items: center; visibility: hidden"
-      >
+      <div id="actualContent">
         <h3>CHOOSE YOUR WEAPON</h3>
-        <div class="tile_container" style="display: flex; align-items: center">
+        <div class="tile_container">
           <div class="tile" onclick="playGame(event)">
             <img id="rock" src="rock.png" alt="Rock" />
           </div>

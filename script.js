@@ -114,14 +114,15 @@ function showButton() {
   document.querySelector(".custom-dark").classList.add("visible");
 }
 document.querySelector(".custom-dark").addEventListener("click", function () {
-  showContent();
+  hideContent();
+  setTimeout(function () {
+    showContent();
+  }, 2200);
 });
 function showContent() {
-  
-    var x = document.getElementById("actualContent");
-    x.style.visibility = "visible";
-    x.style.transition = "2s";
-  }, 2000);
+  var x = document.getElementById("actualContent");
+  x.style.display = "flex";
+  x.style.opacity = 1;
 }
 
 function declareWinner() {
@@ -159,4 +160,14 @@ function displayWinner() {
 
 function reloadPage() {
   location.reload();
+}
+function hideContent() {
+  var content = document.querySelectorAll(".intro, .custom-dark, .field");
+  console.log(content);
+  content.forEach((item) => {
+    item.classList.add("hide");
+    setTimeout(function () {
+      item.classList.add("hideDisplay");
+    }, 2000);
+  });
 }

@@ -20,17 +20,17 @@ body {
 .tile {
   border: 1px solid white;
   border-radius: 5px;
-  padding: 20px;
-  margin: 10px;
-  width: 80px;
-  height: 80px;
-  transition: 0.2s;
-}
 
-.tile:hover {
-  transform: scale(1.15);
+  margin: 30px;
+  width: 120px;
+  height: 120px;
   transition: 0.2s;
-  box-shadow: 0px 0px 10px white;
+
+  &:hover {
+    transform: scale(1.15);
+    transition: 0.2s;
+    box-shadow: 0px 0px 10px white;
+  }
 }
 
 .tile > img {
@@ -78,9 +78,14 @@ body {
   transition: 0.2s;
   box-shadow: 0px 0px 10px white;
 }
-#actual_content {
-  animation: 2s fadeIn;
-  animation-fill-mode: forwards;
+#actualContent {
+  display: none;
+  opacity: 0;
+  transition: all 1s;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #body_container {
@@ -93,11 +98,25 @@ body {
   }
 }
 
+.title {
+  width: 100%;
+  font-size: 60px;
+  text-align: center;
+  position: fixed;
+  top: 0;
+}
 .intro {
   margin: 0;
-
+  width: 100%;
   height: 720px;
   text-align: center;
+
+  &.hide {
+    opacity: 0;
+  }
+  &.hideDisplay {
+    display: none;
+  }
 }
 .intro_text {
   transition: all 0.3s;
@@ -110,20 +129,25 @@ body {
 
 .imagess {
   position: absolute;
-  width: 70%; /* Adjust based on your actual image sizes */
+  width: 50%;
   opacity: 0;
   transition: 2s;
+
+  &.hide {
+    opacity: 0;
+    display: none;
+  }
 }
 
 .leftt {
-  left: -50%; /* Start off-screen */
-  animation: enterLeft 3s forwards; /* Adjust time as needed */
+  left: -50%;
+  animation: enterLeft 3s forwards;
 }
 
 .rightt {
   right: -50%; /* Start off-screen */
-  animation: enterRight 3s forwards; /* Adjust time as needed */
-}
+  animation: enterRight 3s forwards;
+} /* Adjust time as needed */
 
 @keyframes enterLeft {
   0% {
@@ -149,7 +173,7 @@ body {
 
 .custom-dark {
   opacity: 0;
-  display: inline-block;
+  display: none;
   font-size: 30px;
   cursor: pointer;
   background: rgba(190, 193, 196, 0.3);
@@ -162,7 +186,8 @@ body {
   overflow: hidden;
   z-index: 1;
   border: none;
-
+  display: inline-block;
+  cursor: default;
   &:before {
     content: "";
     position: absolute;
@@ -187,22 +212,40 @@ body {
   }
   &.visible {
     opacity: 1;
+    cursor: pointer;
+  }
+  &.hide {
+    opacity: 0;
+    cursor: default;
+  }
+  &.hideDisplay {
+    display: none;
   }
 }
 .field {
-  display: flex;
-  align-items: center;
   margin-bottom: 16px;
   text-align: center;
+  transition: all 2s;
   h2 {
     margin: 0;
   }
   span {
     font-size: 24px;
   }
+  &.bottom {
+    display: flex;
+  }
+  &.hide {
+    opacity: 0;
+  }
 }
 .introField {
   .typed-cursor {
     display: none;
   }
+}
+
+.tile_container {
+  display: flex;
+  align-items: center;
 }
