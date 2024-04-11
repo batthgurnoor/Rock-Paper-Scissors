@@ -113,12 +113,7 @@ function showIntro() {
 function showButton() {
   document.querySelector(".custom-dark").classList.add("visible");
 }
-document.querySelector(".custom-dark").addEventListener("click", function () {
-  hideContent();
-  setTimeout(function () {
-    showContent();
-  }, 2200);
-});
+
 function showContent() {
   var x = document.getElementById("actualContent");
   x.style.display = "flex";
@@ -193,11 +188,12 @@ function displayWinner() {
   var audio;
   if (playWinCount > compWinCount && playWinCount >= tieCount) {
     content1 = playerWinMessage;
-    audio = new Audio("win.mp3");
+    audio = new Audio("audios/win.mp3");
     jsConfetti.addConfetti();
   } else if (playWinCount < compWinCount && compWinCount >= tieCount) {
     content1 = computerWinMessage;
-    audio = new Audio("loss.mp3");
+    makeItRain();
+    audio = new Audio("audios/rainAudio.wav");
   }
   audio.play();
 
@@ -207,3 +203,93 @@ function displayWinner() {
 function showReplayButton() {
   document.querySelector(".lastButton").classList.add("visible");
 }
+var makeItRain = function () {
+  //clear out everything
+  document.querySelectorAll(".rain").forEach(function (elem) {
+    elem.innerHTML = "";
+    elem.classList.add("visible");
+  });
+  document.querySelectorAll(".back-row").forEach(function (elem) {
+    elem.classList.add("visible");
+  });
+
+  var increment = 0;
+  var drops = "";
+  var backDrops = "";
+
+  while (increment < 100) {
+    //couple random numbers to use for various randomizations
+    //random number between 98 and 1
+    var randoHundo = Math.floor(Math.random() * (98 - 1 + 1) + 1);
+    //random number between 5 and 2
+    var randoFiver = Math.floor(Math.random() * (5 - 2 + 1) + 2);
+    //increment
+    increment += randoFiver;
+    //add in a new raindrop with various randomizations to certain CSS properties
+    drops +=
+      '<div class="drop" style="left: ' +
+      increment +
+      "%; bottom: " +
+      (randoFiver + randoFiver - 1 + 100) +
+      "%; animation-delay: 0." +
+      randoHundo +
+      "s; animation-duration: 0.5" +
+      randoHundo +
+      's;"><div class="stem" style="animation-delay: 0.' +
+      randoHundo +
+      "s; animation-duration: 0.5" +
+      randoHundo +
+      's;"></div><div class="splat" style="animation-delay: 0.' +
+      randoHundo +
+      "s; animation-duration: 0.5" +
+      randoHundo +
+      's;"></div></div>';
+    backDrops +=
+      '<div class="drop" style="right: ' +
+      increment +
+      "%; bottom: " +
+      (randoFiver + randoFiver - 1 + 100) +
+      "%; animation-delay: 0." +
+      randoHundo +
+      "s; animation-duration: 0.5" +
+      randoHundo +
+      's;"><div class="stem" style="animation-delay: 0.' +
+      randoHundo +
+      "s; animation-duration: 0.5" +
+      randoHundo +
+      's;"></div><div class="splat" style="animation-delay: 0.' +
+      randoHundo +
+      "s; animation-duration: 0.5" +
+      randoHundo +
+      's;"></div></div>';
+  }
+
+  document.querySelector(".rain.front-row").innerHTML += drops;
+  document.querySelector(".rain.back-row").innerHTML += backDrops;
+};
+
+var modal = document.getElementById("myModal");
+var btn = document.querySelector(".playGame");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick = function () {
+  modal.style.display = "block";
+};
+span.onclick = function () {
+  modal.style.display = "none";
+};
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+
+function displayFunction() {
+  hideContent();
+  setTimeout(function () {
+    showContent();
+  }, 2200);
+}
+document.querySelector(".warningBtn").addEventListener("click", function () {
+  displayFunction();
+  modal.style.display = "none";
+});
