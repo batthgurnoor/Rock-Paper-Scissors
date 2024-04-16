@@ -191,8 +191,8 @@ function displayWinner() {
     jsConfetti.addConfetti();
   } else if (playWinCount < compWinCount && compWinCount >= tieCount) {
     content1 = computerWinMessage;
-    makeItRain();
     audio = new Audio("audios/rainAudio.wav");
+    makeItRain();
   }
   audio.play();
 
@@ -299,6 +299,7 @@ document.querySelector(".muteBtn").addEventListener("click", function () {
       audio.pause();
       document.querySelector(".muteBtn img").setAttribute("src", "images/mute.png");
     } else {
+      audio.play();
       document.querySelector(".muteBtn img").setAttribute("src", "images/unmute.png");
     }
   } else {

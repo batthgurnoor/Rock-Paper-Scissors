@@ -556,6 +556,7 @@ body.single-toggle .drop:nth-child(10) {
   top: 89%;
   left: 93%;
   transition: all 0.3s;
+  z-index: 90999099;
 
   &:hover {
     transform: scale(1.1);
