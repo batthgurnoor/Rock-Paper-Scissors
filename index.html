@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="responsive.css" />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
@@ -13,74 +14,75 @@
       <div class="rain front-row"></div>
       <div class="rain back-row"></div>
     </div>
-    <h1 class="title">Rock Paper Scissors Reimagined</h1>
+    <header><h1 class="title">Rock Paper Scissors Reimagined</h1></header>
+    <main>
+      <div class="intro">
+        <div class="field introField"><h2 class="intro_text container"></h2></div>
 
-    <div class="intro">
-      <div class="field introField"><h2 class="intro_text container"></h2></div>
-
-      <div class="imagess leftt">
-        <img src="images/image (2).png" alt="Human" />
-      </div>
-      <div class="imagess rightt">
-        <img src="images/image (1).png" alt="Machine" />
-      </div>
-    </div>
-    <div id="body_container">
-      <div class="field bottom"><h2 class="after_intro_text"></h2></div>
-
-      <button class="custom-dark playGame">Play Game</button>
-
-      <div id="actualContent">
-        <h2>CHOOSE YOUR WEAPON</h2>
-        <div class="tile_container">
-          <div class="tile" onclick="playGame(event)">
-            <img id="rock" src="images/rock.png" alt="Rock" />
-          </div>
-          <div class="tile" onclick="playGame(event)">
-            <img id="paper" src="images/paper.png" alt="Paper" />
-          </div>
-          <div class="tile" onclick="playGame(event)">
-            <img id="scissors" src="images/scissors.png" alt="Scissors" />
-          </div>
+        <div class="imagess leftt">
+          <img src="images/image (2).png" alt="Human" />
         </div>
-        <div class="result_container">
-          <table class="result" style="text-align: center">
-            <tbody>
-              <tr>
-                <td>MAN</td>
-                <td>MACHINE</td>
-                <td>TIES</td>
-              </tr>
-              <tr>
-                <td id="man">0</td>
-                <td id="machine">0</td>
-
-                <td id="ties">0</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="imagess rightt">
+          <img src="images/image (1).png" alt="Machine" />
         </div>
-        <h3 id="results"></h3>
       </div>
-    </div>
-    <div id="result_page" class="result_page">
-      <h1 id="outcome" class="outcome"></h1>
-      <h2 id="outcome_inner" class="outcome_inner"></h2>
-      <h3 id="outcome_last" class="outcome_last"></h3>
-      <button id="reload_button" class="lastButton" onclick="reloadPage()">Another Round</button>
-    </div>
-    <div id="myModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h1>Disclaimer!</h1>
-        <p>
-          Please Note that the game uses audio cues in the result page.<br /><br />
-          If you feel uncomforatble using the cues, Please look for a Voice Control Button in the bottom right
-          of the page.
-        </p>
-        <button class="custom-dark warningBtn">I understand!</button>
+      <div id="body_container">
+        <div class="field bottom"><h2 class="after_intro_text"></h2></div>
+
+        <button class="custom-dark playGame">Play Game</button>
+
+        <div id="actualContent">
+          <h2>CHOOSE YOUR WEAPON</h2>
+          <div class="tile_container">
+            <div class="tile" onclick="playGame(event)">
+              <img id="rock" src="images/rock.png" alt="Rock" />
+            </div>
+            <div class="tile" onclick="playGame(event)">
+              <img id="paper" src="images/paper.png" alt="Paper" />
+            </div>
+            <div class="tile" onclick="playGame(event)">
+              <img id="scissors" src="images/scissors.png" alt="Scissors" />
+            </div>
+          </div>
+          <div class="result_container">
+            <table class="result" style="text-align: center">
+              <tbody>
+                <tr>
+                  <td>MAN</td>
+                  <td>MACHINE</td>
+                  <td>TIES</td>
+                </tr>
+                <tr>
+                  <td id="man">0</td>
+                  <td id="machine">0</td>
+
+                  <td id="ties">0</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 id="results"></h3>
+        </div>
       </div>
-    </div>
-    <button class="muteBtn"><img src="images/unmute.png" alt="Unmute" /></button>
+      <div id="result_page" class="result_page">
+        <h1 id="outcome" class="outcome"></h1>
+        <h2 id="outcome_inner" class="outcome_inner"></h2>
+        <h3 id="outcome_last" class="outcome_last"></h3>
+        <button id="reload_button" class="lastButton" onclick="reloadPage()">Another Round</button>
+      </div>
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h1>Disclaimer!</h1>
+          <p>
+            Please Note that the game uses audio cues in the result page.<br /><br />
+            If you feel uncomforatble using the cues, Please look for a Voice Control Button in the bottom
+            right of the page.
+          </p>
+          <button class="custom-dark warningBtn">I understand!</button>
+        </div>
+      </div>
+      <button class="muteBtn"><img src="images/unmute.png" alt="Unmute" /></button>
+    </main>
   </body>
 </html>
